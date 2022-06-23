@@ -3,6 +3,7 @@
 namespace App\Ship\Support;
 
 use App\Containers\v1\Authentication\Models\PasswordReset;
+use App\Containers\v1\User\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Collection;
@@ -17,6 +18,7 @@ use Illuminate\Support\Str;
  * @method void hasAnyPermission(...$permissions)
  * @method array idsStringToArray(string $ids)
  * @method bool compare($targetValue, $compareValue, string $operator)
+ * @method string generateVerificationToken(bool $isChangeEmail = false)
  */
 class Helper
 {
@@ -125,5 +127,25 @@ class Helper
             default:
                 return false;
         }
+    }
+
+    /**
+     * Generate Verification Token
+     *
+     * @param bool $isChangeEmail
+     * @return string
+     */
+    public function generateVerificationToken(bool $isChangeEmail = false): string
+    {
+        do {
+            $length = 64;
+            $token = Str::random($length); // @codeCoverageIgnore
+
+            if ($isChangeEmail) {
+                $token .= "update";
+            }
+        } while (User::where('verification_token', $token)->exists());
+
+        return $token;
     }
 }

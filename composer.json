@@ -20,6 +20,7 @@
         "league/flysystem": "^3.0",
         "mazfreelance/laravel-command-generator": "^2.0",
         "predis/predis": "^2.0",
+        "pusher/pusher-php-server": "^7.0",
         "rogervila/lumen-rate-limiting": "^1.1",
         "sentry/sentry-laravel": "^2.12",
         "spatie/laravel-permission": "^5.5",

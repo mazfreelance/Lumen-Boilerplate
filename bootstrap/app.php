@@ -64,6 +64,7 @@ $app->configure('cache');
 $app->configure('database');
 $app->configure('filesystems');
 $app->configure('logging');
+$app->configure('mail');
 $app->configure('permission');
 $app->configure('queue');
 $app->configure('services');

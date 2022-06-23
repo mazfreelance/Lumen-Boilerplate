@@ -43,7 +43,14 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            // 'host' => env('DB_HOST', '127.0.0.1'),
+            'read' => [
+                'host' => explode(",", env('DB_READ_HOST', '127.0.0.1'))
+            ],
+            'write' => [
+                'host' => explode(",", env('DB_HOST', '127.0.0.1'))
+            ],
+            'sticky' => true,
             'port' => env('DB_PORT', 3306),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
@@ -53,8 +60,7 @@ return [
             'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => env('DB_PREFIX', ''),
             'strict' => env('DB_STRICT_MODE', true),
-            'engine' => env('DB_ENGINE'),
-            'timezone' => env('DB_TIMEZONE', '+00:00'),
+            'engine' => env('DB_ENGINE', null),
         ],
 
         'pgsql' => [
