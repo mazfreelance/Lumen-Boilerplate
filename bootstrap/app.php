@@ -65,6 +65,7 @@ $app->configure('database');
 $app->configure('filesystems');
 $app->configure('logging');
 $app->configure('mail');
+$app->configure('passport');
 $app->configure('permission');
 $app->configure('queue');
 $app->configure('services');
@@ -108,6 +109,7 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Ship\Middleware\Authenticate::class,
+    'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
     'throttle' => \LumenRateLimiting\ThrottleRequests::class,

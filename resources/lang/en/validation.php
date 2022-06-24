@@ -133,14 +133,14 @@ return [
         'attribute' => [
             'exist' => 'The selected value does not exist.',
             'taken' => 'The :attribute has already been taken.',
-            'repeated' => 'The :attribute has already been repeated.'
+            'repeated' => 'The :attribute has already been repeated.',
+            'required' => 'The :attribute field is required.'
         ],
         'price' => [
             'digits' => 'The :attribute must be between 1 and 30 digits.',
             'decimals' => 'The :attribute must be between 1 and 2 decimals.',
         ],
         'base64_image' => 'The :attribute has invalid base64 format or invalid file extension.',
-        'promotion_id' => 'The :attribute is invalid Happy Friday promotion id.',
         'strong_password' => 'The :attribute must have at least 1 lowercase, 1 uppercase, 1 number and 1 special character.',
         'email' => 'You can only use letters, numbers, hyphens ("-"), periods ("."), and underscores ("_") in your email.',
     ],

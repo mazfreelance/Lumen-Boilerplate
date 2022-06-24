@@ -39,7 +39,7 @@ abstract class User extends Model implements AuthenticatableContract, Authorizab
         });
     }
 
-    private function revokeRefreshToken(string $tokenId): void
+    public function revokeRefreshToken(string $tokenId): void
     {
         $refreshTokenRepository = app('Laravel\Passport\RefreshTokenRepository');
         $refreshTokenRepository->revokeRefreshTokensByAccessTokenId($tokenId);

@@ -122,5 +122,7 @@ return [
 
     'log' => [
         'request' => env('ENABLE_REQUEST_LOG', false)
-    ]
+    ],
+
+    'allow_login_multiple_token' => env('ALLOW_LOGIN_MULTIPLE_TOKEN', false),
 ];

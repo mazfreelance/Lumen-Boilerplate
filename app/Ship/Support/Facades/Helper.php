@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array idsStringToArray(string $ids)
  * @method static bool compare($targetValue, $compareValue, string $operator)
  * @method static string generateVerificationToken(bool $isChangeEmail = false)
+ * @method static string maskEmail(string $email)
  *
  * @see \App\Ship\Support\Helper
  */

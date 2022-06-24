@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
  * @method array idsStringToArray(string $ids)
  * @method bool compare($targetValue, $compareValue, string $operator)
  * @method string generateVerificationToken(bool $isChangeEmail = false)
+ * @method string maskEmail(string $email)
  */
 class Helper
 {
@@ -46,7 +47,7 @@ class Helper
      */
     public function isLoggedInAndHasRole(...$roles): bool
     {
-        return Auth::user() && Auth::user()->hasAnyRole($roles);
+        return Auth::user() && !$this->hasAnyRole(Auth::user(), $roles);
     }
 
     /**
@@ -57,7 +58,12 @@ class Helper
      */
     public function isGuestOrNotHasRole(...$roles): bool
     {
-        return Auth::guest() || (Auth::user() && !Auth::user()->hasAnyRole($roles));
+        return Auth::guest() || (Auth::user() && !$this->hasAnyRole(Auth::user(), $roles));
+    }
+
+    private function hasAnyRole(User $user, ...$roles): bool
+    {
+        return $user->hasAnyRole($roles);
     }
 
     /**
@@ -147,5 +153,16 @@ class Helper
         } while (User::where('verification_token', $token)->exists());
 
         return $token;
+    }
+
+    /**
+     * Mask Email
+     *
+     * @param string $email
+     * @return string
+     */
+    public function maskEmail(string $email): string
+    {
+        return preg_replace("/(?<=.{2})[^@\n](?=[^@\n]{0,2}?@)|((?<=@.{2}).|(?<=@.{3}).|(?<=@.{4}).(?=.*\.))(?=.*\.)/", "*", $email);
     }
 }

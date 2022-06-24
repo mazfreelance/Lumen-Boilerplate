@@ -63,4 +63,20 @@ return [
         ],
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Password Access Client
+    |--------------------------------------------------------------------------
+    |
+    | If you enable client hashing, you should set the personal access client
+    | ID and unhashed secret within your environment file. The values will
+    | get used while issuing fresh personal access tokens to your users.
+    |
+    */
+
+    'password_access_client' => [
+        'id' => env('PASSPORT_PASSWORD_ACCESS_CLIENT_ID'),
+        'secret' => env('PASSPORT_PASSWORD_ACCESS_CLIENT_SECRET')
+    ],
 ];

@@ -2,8 +2,11 @@
 
 namespace App\Ship\Console;
 
+use App\Ship\Console\Commands\RevokeExpiredUserTokenCommand;
+use BenSampo\Enum\Commands\MakeEnumCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
+use Laravelista\LumenVendorPublish\VendorPublishCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,8 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
-        \BenSampo\Enum\Commands\MakeEnumCommand::class
+        VendorPublishCommand::class,
+        MakeEnumCommand::class,
+        RevokeExpiredUserTokenCommand::class
     ];
 
     /**
@@ -25,6 +29,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        $schedule->command(RevokeExpiredUserTokenCommand::class)->everyMinute()->withoutOverlapping();
     }
 }

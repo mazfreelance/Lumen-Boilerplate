@@ -10,6 +10,8 @@ use App\Ship\Support\{
 };
 use Illuminate\Support\ServiceProvider;
 use Jenssegers\Agent\Agent;
+use Laravel\Passport\Client;
+use Ramsey\Uuid\Uuid;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -55,5 +57,26 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->make('queue');
+
+
+        $this->createClient();
+    }
+
+    private function createClient()
+    {
+        $checkClientUuid = config('passport.client_uuids');
+
+        $incrementing = true;
+        if($checkClientUuid) {
+            Client::creating(function (Client $client) {
+                $client->incrementing = false;
+                $client->id = Uuid::uuid4()->toString();
+            });
+            $incrementing = false;
+        }
+
+        Client::retrieved(function (Client $client) use ($incrementing) {
+            $client->incrementing = $incrementing;
+        });
     }
 }

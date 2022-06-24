@@ -36,5 +36,6 @@ class AuthServiceProvider extends ServiceProvider
         LumenPassport::tokensExpireIn(Carbon::now()->addMinutes(20));
         Passport::refreshTokensExpireIn(Carbon::now()->addHour());
         LumenPassport::allowMultipleTokens();
+        Passport::hashClientSecrets();
     }
 }

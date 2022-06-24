@@ -122,5 +122,14 @@ return [
     |
     */
     'recipient_cc' => env('MAIL_RECIPIENT_CC'),
-    'recipient_bcc' => env('MAIL_RECIPIENT_BCC')
+    'recipient_bcc' => env('MAIL_RECIPIENT_BCC'),
+
+    /*
+    |---------------------------------------------------------------------------
+    | Mail Official
+    |---------------------------------------------------------------------------
+    */
+    'admin' => env('MAIL_ADMIN', 'admin@mail.test'),
+    'support' => env('MAIL_SUPPORT', 'support@mail.test'),
+    'no_reply' => env('MAIL_NO_REPLY', 'noreply@mail.test')
 ];
