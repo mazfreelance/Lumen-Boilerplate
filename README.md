@@ -24,6 +24,7 @@
     ```
     >This will be the default is false. User can login one(1) device only.
 - Implemented debugging tool for developer using `Sentry`
+- Implemented Import/Export to excel
 - Clean controller setup
 	- Controller will only inject `Action` class and should only call the `execute` method.
 	- All business logic related function is handled in `Action` class
@@ -44,6 +45,7 @@
 - Spatie/Laravel Permission
 - Sentry
 - Guzzle HTTP
+- Maatwebsite/excel
 
 ## Prerequisite
 Fork this repository to your own repository.

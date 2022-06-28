@@ -62,6 +62,7 @@ $app->configure('auth');
 $app->configure('broadcasting');
 $app->configure('cache');
 $app->configure('database');
+$app->configure('excel');
 $app->configure('filesystems');
 $app->configure('logging');
 $app->configure('mail');
@@ -140,6 +141,7 @@ $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Anik\Form\FormRequestServiceProvider::class);
 $app->register(Sentry\Laravel\ServiceProvider::class);
 $app->register(Sentry\Laravel\Tracing\ServiceProvider::class);
+$app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
 
 $app->register(App\Ship\Providers\AppServiceProvider::class);
 $app->register(App\Ship\Providers\AuthServiceProvider::class);

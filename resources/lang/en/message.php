@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'currently_online' => 'You are currently logged-in in another device. By continuing, your current session will be terminated. Continue?',
     'invalid_credential' => 'Incorrect login credentials.',
     'invalid_current_password' => 'Invalid current password.',
     'invalid_data' => 'The given data was invalid.',
@@ -9,6 +10,7 @@ return [
     'invalid_input' => 'The given data is invalid.',
     'invalid_reset_token' => 'Invalid reset password token.',
     'ip_not_whitelist' => 'Unauthorized ip address.',
+    'no_approve_application' => 'No approved application found.',
     'no_permission_access' => 'You do not have the permission to access this record.',
     'no_permission_login' => 'You do not have the permission to login.',
     'no_permission_manage' => 'You do not have the permission to manage this record.',
@@ -26,7 +28,7 @@ return [
     'success_logout' => 'Successfully logout.',
     'success_refresh' => 'Token has successfully refreshed.',
     'success_register' => 'Successfully registered.',
-    'success_retrieve' => 'Successfully retrieved.',
+    'success_retrieved' => 'Successfully retrieved.',
     'success_sent_email' => 'Email sent.',
     'success_sent' => 'Reset password email has been sent.',
     'success_subscribe' => 'Successfully subscribed to email newsletter.',
@@ -47,4 +49,8 @@ return [
         'invalid_body_type' => 'Invalid guzzle request body type.',
         'request_error' => 'Error processing your request. Please try again.',
     ],
+    'you_can_only_update_own_current_role' => 'You can only update your own current role.',
+    'you_can_only_delete_your_own_account' => 'You can only delete your own account.',
+    'you_cant_delete_admin' => 'You cannot delete admin.',
+    'you_cant_delete_yourself' => 'You cannot delete yourself.',
 ];

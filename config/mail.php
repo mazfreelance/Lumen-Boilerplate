@@ -121,8 +121,8 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'recipient_cc' => env('MAIL_RECIPIENT_CC'),
-    'recipient_bcc' => env('MAIL_RECIPIENT_BCC'),
+    'recipient_cc' => env('MAIL_RECIPIENT_CC', 'cc@mail.test,cc2@mail.test'),
+    'recipient_bcc' => env('MAIL_RECIPIENT_BCC', 'bcc@mail.test,bcc2@mail.test'),
 
     /*
     |---------------------------------------------------------------------------
