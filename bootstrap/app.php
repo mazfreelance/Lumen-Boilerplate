@@ -61,6 +61,7 @@ $app->configure('app');
 $app->configure('auth');
 $app->configure('broadcasting');
 $app->configure('cache');
+$app->configure('cors');
 $app->configure('database');
 $app->configure('excel');
 $app->configure('filesystems');
@@ -142,6 +143,7 @@ $app->register(Anik\Form\FormRequestServiceProvider::class);
 $app->register(Sentry\Laravel\ServiceProvider::class);
 $app->register(Sentry\Laravel\Tracing\ServiceProvider::class);
 $app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 
 $app->register(App\Ship\Providers\AppServiceProvider::class);
 $app->register(App\Ship\Providers\AuthServiceProvider::class);

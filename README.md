@@ -31,6 +31,7 @@
 - Standardized API response which include:
 	- Unauthorized request
 	- Validation request
+- Support CORS
 - Support API versioning
 
 ## Package Include

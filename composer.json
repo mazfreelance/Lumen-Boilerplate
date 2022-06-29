@@ -10,6 +10,7 @@
         "bensampo/laravel-enum": "^5.3",
         "dusterio/lumen-passport": "^0.3.6",
         "flipbox/lumen-generator": "^9.1",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/mail": "^9.17",
         "illuminate/notifications": "^9.17",
