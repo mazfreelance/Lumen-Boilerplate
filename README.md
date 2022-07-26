@@ -86,16 +86,28 @@ php artisan passport:client --personal
 ```
 
 ## Unit Test
-> all test case
+> for run phpunit test in laravel by many ways ..
 ```bash
-vendor/bin/phpunit
+vendor/bin/phpunit --filter methodName className pathTofile.php
+vendor/bin/phpunit --filter 'namespace\\directoryName\\className::methodName'
 ```
-> specific test case
-* `<folder_name>` - Unit / Feature
+
+> for test single class:
 ```bash
-vendor/bin/phpunit tests/<folder_name>/<class_name>
+vendor/bin/phpunit tests/Feature/UserTest.php
+vendor/bin/phpunit --filter  tests/Feature/UserTest.php
+vendor/bin/phpunit --filter 'Tests\\Feature\\UserTest'
+vendor/bin/phpunit --filter 'UserTest' 
 ```
-> specific function on test case
+
+> for test single method:
 ```bash
-vendor/bin/phpunit --filter=functionName
+ vendor/bin/phpunit --filter testExample 
+ vendor/bin/phpunit --filter 'Tests\\Feature\\UserTest::testExample'
+ vendor/bin/phpunit --filter testExample UserTest tests/Feature/UserTest.php
+```
+
+> for run tests from all class within namespace:
+```bash
+vendor/bin/phpunit --filter 'Tests\\Feature'
 ```
