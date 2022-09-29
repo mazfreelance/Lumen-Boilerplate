@@ -2,7 +2,8 @@
 
 namespace App\Ship\Abstracts\Models;
 
-use Illuminate\Database\Eloquent\{Builder, Model};
+use App\Ship\Abstracts\Eloquent\Model;
+use Illuminate\Database\Eloquent\{Builder};
 use Spatie\Sluggable\{HasSlug, SlugOptions};
 
 abstract class SlugModel extends Model

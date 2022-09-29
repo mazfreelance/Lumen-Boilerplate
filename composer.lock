@@ -2744,16 +2744,16 @@
         },
         {
             "name": "laravel/lumen-framework",
-            "version": "v9.0.2",
+            "version": "v9.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/lumen-framework.git",
-                "reference": "948419d8531d29dbdda4b04e50d92fc2f277258a"
+                "reference": "e34fc426550cd9d7a6a9cdd80fec45af79a9db45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/948419d8531d29dbdda4b04e50d92fc2f277258a",
-                "reference": "948419d8531d29dbdda4b04e50d92fc2f277258a",
+                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/e34fc426550cd9d7a6a9cdd80fec45af79a9db45",
+                "reference": "e34fc426550cd9d7a6a9cdd80fec45af79a9db45",
                 "shasum": ""
             },
             "require": {
@@ -2837,7 +2837,7 @@
                 "issues": "https://github.com/laravel/lumen-framework/issues",
                 "source": "https://github.com/laravel/lumen-framework"
             },
-            "time": "2022-03-29T15:40:55+00:00"
+            "time": "2022-07-13T15:04:20+00:00"
         },
         {
             "name": "laravel/passport",
@@ -12246,5 +12246,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }

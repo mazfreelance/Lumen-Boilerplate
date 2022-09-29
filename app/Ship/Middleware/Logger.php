@@ -14,6 +14,7 @@ class Logger
     protected $excludeParameters = ['password', 'password_confirmation', 'current_password', 'new_password', 'new_password_confirmation'];
 
     protected $excludeUrls = [
+        '/',
         'oauth/token__POST',
         'v1/enum/*',
         'v1/user/me'
