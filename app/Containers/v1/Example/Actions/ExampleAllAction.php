@@ -6,6 +6,10 @@ use App\Containers\v1\Example\DTO\ExampleAllDTO;
 use PragmaRX\Google2FALaravel\Facade as Google2FAFacade;
 use PragmaRX\Google2FAQRCode\Google2FA;
 
+/**
+ * @source https://github.com/antonioribeiro/google2fa-laravel
+ * @source https://github.com/antonioribeiro/google2fa-qrcode
+ */
 class ExampleAllAction
 {
     public function execute(ExampleAllDTO $dto)
