@@ -17,7 +17,9 @@ class Logger
         '/',
         'oauth/token__POST',
         'v1/enum/*',
-        'v1/user/me'
+        'v1/user/me',
+        'v1/examples',
+        'v1/examples/*',
     ];
 
     private $strictMethodCheck = false;

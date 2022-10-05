@@ -25,6 +25,7 @@ class Controller extends BaseController
     {
         $exampleDTO = ExampleAllDTO::fromRequest($request);
         $exampleAction = Executor::run('Example@ExampleAllAction', $exampleDTO);
+        return Responder::success($exampleAction, __('message.success_save'));
         return Responder::collection(Example::collection($exampleAction));
     }
 

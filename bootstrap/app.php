@@ -92,6 +92,8 @@ $app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 $app->alias('cache', \Illuminate\Cache\CacheManager::class);
 
+$app->alias('Google2FA', PragmaRX\Google2FALaravel\Facade::class);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -115,6 +117,7 @@ $app->routeMiddleware([
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
     'throttle' => \LumenRateLimiting\ThrottleRequests::class,
+    '2fa' => \PragmaRX\Google2FALaravel\Middleware::class,
 ]);
 
 /*
@@ -144,6 +147,7 @@ $app->register(Sentry\Laravel\ServiceProvider::class);
 $app->register(Sentry\Laravel\Tracing\ServiceProvider::class);
 $app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
+$app->register(PragmaRX\Google2FALaravel\ServiceProvider::class);
 
 $app->register(App\Ship\Providers\AppServiceProvider::class);
 $app->register(App\Ship\Providers\AuthServiceProvider::class);

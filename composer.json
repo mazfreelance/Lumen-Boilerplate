@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0",
         "anik/form-request": "^4.5",
+        "bacon/bacon-qr-code": "^2.0",
         "bensampo/laravel-enum": "^5.3",
         "dusterio/lumen-passport": "^0.3.6",
         "flipbox/lumen-generator": "^9.1",
@@ -21,6 +22,7 @@
         "league/flysystem": "^3.0",
         "maatwebsite/excel": "^3.1",
         "mazfreelance/laravel-command-generator": "^2.0",
+        "pragmarx/google2fa-laravel": "^2.0",
         "predis/predis": "^2.0",
         "psr/simple-cache": "1.0",
         "pusher/pusher-php-server": "^7.0",
