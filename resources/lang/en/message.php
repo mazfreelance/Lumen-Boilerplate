@@ -10,6 +10,7 @@ return [
     'invalid_input' => 'The given data is invalid.',
     'invalid_reset_token' => 'Invalid reset password token.',
     'ip_not_whitelist' => 'Unauthorized ip address.',
+    'method_not_allowed' => 'Method not allowed.',
     'no_approve_application' => 'No approved application found.',
     'no_permission_access' => 'You do not have the permission to access this record.',
     'no_permission_login' => 'You do not have the permission to login.',
