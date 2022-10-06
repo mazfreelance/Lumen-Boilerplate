@@ -21,7 +21,7 @@ class LoginDTO extends DataTransferObject
         return new self([
             'email' => $request->email,
             'password' => $request->password,
-            'force' => $request->force
+            'force' => $request->force ?? false
         ]);
     }
 

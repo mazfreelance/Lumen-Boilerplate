@@ -97,6 +97,19 @@ class Responder
     }
 
     /**
+     * Method Not Allowed
+     *
+     * @return JsonResponse
+     */
+    public function methodNotAllowed(): JsonResponse
+    {
+        return response()->json([
+            'code' => JsonResponse::HTTP_METHOD_NOT_ALLOWED,
+            'message' => __('message.method_not_allowed'),
+        ], JsonResponse::HTTP_NOT_FOUND);
+    }
+
+    /**
      * Error
      *
      * @param string $message

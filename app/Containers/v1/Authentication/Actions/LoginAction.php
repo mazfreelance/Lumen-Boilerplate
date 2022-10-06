@@ -49,7 +49,7 @@ class LoginAction
     }
     private function isOnline(User $user, bool $isForce): void
     {
-        if (!$isForce && $user->online_status->value === UserOnlineStatus::Online) {
+        if ($user->online_status->value === UserOnlineStatus::Online && !$isForce) {
             throw new GeneralHttpException(__('message.currently_online'));
         }
     }
@@ -63,16 +63,17 @@ class LoginAction
 
     private function getAccessToken(User $user, LoginDTO $loginDTO) : array
     {
+
+        if (!config('app.allow_login_multiple_token')) {
+            $this->isOnline($user, $loginDTO->force);
+            $accessToken = $this->generatePersonalAccessToken($user);
+        } else $accessToken = $this->generatePasswordAccessToken($user, $loginDTO->password);
+
         $user->update([
             'online_status' => UserOnlineStatus::Online(),
             'last_login_at' => Carbon::now(),
             'last_login_ip' => Request::ip()
         ]);
-
-        if (!config('app.allow_login_multiple_token')) {
-            $this->isOnline($user, $loginDTO->force ?? true);
-            $accessToken = $this->generatePersonalAccessToken($user);
-        } else $accessToken = $this->generatePasswordAccessToken($user, $loginDTO->password);
 
         return $accessToken;
     }

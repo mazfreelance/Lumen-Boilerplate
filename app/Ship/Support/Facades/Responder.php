@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Illuminate\Http\JsonResponse forbiddenLogin()
  * @method static \Illuminate\Http\JsonResponse tooManyAttempts()
  * @method static \Illuminate\Http\JsonResponse collection(array $data = [])
+ * @method static \Illuminate\Http\JsonResponse methodNotAllowed()
  *
  * @see \App\Ship\Support\Responder
  */
