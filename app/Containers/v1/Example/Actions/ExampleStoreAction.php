@@ -8,6 +8,6 @@ class ExampleStoreAction
 {
     public function execute(ExampleStoreDTO $dto)
     {
-        return [];
+        return $dto->toArray();
     }
 }

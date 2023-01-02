@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
             app('sentry')->captureException($exception);
         }
-        
+
         parent::report($exception);
     }
 
@@ -62,9 +62,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if (!$request->expectsJson()) {
-            return parent::render($request, $exception);
-        }
+        // if (!$request->expectsJson()) {
+        //     return parent::render($request, $exception);
+        // }
 
         if ($exception instanceof AuthenticationException) {
             return Responder::unauthorized();

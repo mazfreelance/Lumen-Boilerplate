@@ -8,6 +8,6 @@ class ExampleUpdateAction
 {
     public function execute(ExampleUpdateDTO $dto)
     {
-        return [];
+        return $dto->toArray();
     }
 }

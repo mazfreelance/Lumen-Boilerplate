@@ -17,6 +17,9 @@ require_once __DIR__.'/../vendor/autoload.php';
 |
 */
 
+// $app = new Laravel\Lumen\Application(
+//    dirname(__DIR__)
+// );
 $app = new \Dusterio\LumenPassport\Lumen7Application(
     dirname(__DIR__)
 );
@@ -139,6 +142,7 @@ $app->register(EloquentFilter\LumenServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
+$app->register(Spatie\LaravelData\LaravelDataServiceProvider::class);
 $app->register(Anik\Form\FormRequestServiceProvider::class);
 $app->register(Sentry\Laravel\ServiceProvider::class);
 $app->register(Sentry\Laravel\Tracing\ServiceProvider::class);

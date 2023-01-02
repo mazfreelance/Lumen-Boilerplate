@@ -2,24 +2,52 @@
 
 namespace App\Containers\v1\Example\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\{Data, Optional};
+use Spatie\LaravelData\Attributes\{MapInputName, MapOutputName};
+use Spatie\LaravelData\Attributes\WithoutValidation;
 
 /**
- * @reference https://github.com/spatie/data-transfer-object
+ * @reference https://spatie.be/docs/laravel-data/v2/getting-started/quickstart
  */
-class ExampleAllDTO extends DataTransferObject
+class ExampleAllDTO extends Data
 {
-    public $example_1;
+    public function __construct(
+        #[WithoutValidation]
+        #[MapInputName('example_one')]
+        #[MapOutputName('example_one')]
+        public ?string $exampleOne,
 
-    public $example_2;
+        #[MapInputName('example_two')]
+        #[MapOutputName('example_two')]
+        public string $exampleTwo
+    ) {}
 
-    public static function fromRequest(Request $request): self
+    // overwriting attributes
+    public static function attributes(): array
     {
-        return new self([
-            'example_1' => $request->example_1,
-            'example_2' => $request->example_2,
-        ]);
+        return [
+            'example_one' => 'new name'
+        ];
     }
 
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
+    {
+        return [
+            'example_one' => 'required|integer',
+        ];
+    }
+
+    // overwriting error messages
+    public static function messages(): array
+    {
+        return [
+            'example_one.required' => 'A :attribute is required. Please enter the value',
+            'example_one.integer' => 'An test is number integer',
+        ];
+    }
 }

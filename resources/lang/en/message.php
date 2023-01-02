@@ -30,6 +30,7 @@ return [
     'success_refresh' => 'Token has successfully refreshed.',
     'success_register' => 'Successfully registered.',
     'success_retrieved' => 'Successfully retrieved.',
+    'success_save' => 'Successfully saved.',
     'success_sent_email' => 'Email sent.',
     'success_sent' => 'Reset password email has been sent.',
     'success_subscribe' => 'Successfully subscribed to email newsletter.',

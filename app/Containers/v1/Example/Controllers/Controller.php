@@ -3,8 +3,6 @@
 namespace App\Containers\v1\Example\Controllers;
 
 use App\Containers\v1\Example\DTO\{ExampleAllDTO, ExampleStoreDTO, ExampleUpdateDTO};
-use App\Containers\v1\Example\Requests\{StoreRequest, UpdateRequest};
-use App\Containers\v1\Example\Resources\Example;
 use App\Ship\Controllers\Controller as BaseController;
 use App\Ship\Support\Facades\{Executor, Responder};
 use Illuminate\Http\Request;
@@ -23,27 +21,28 @@ class Controller extends BaseController
 
     public function index(Request $request)
     {
-        $exampleDTO = ExampleAllDTO::fromRequest($request);
-        $exampleAction = Executor::run('Example@ExampleAllAction', $exampleDTO);
-        return Responder::collection(Example::collection($exampleAction));
+        $exampleDTO = ExampleAllDTO::from($request);
+        return $exampleAction = Executor::run('Example@ExampleAllAction', $exampleDTO);
+        // return Responder::collection(Example::collection($exampleAction));
     }
 
     public function show(int $id)
     {
         $exampleAction = Executor::run('Example@ExampleOneAction', $id);
-        return Responder::success(new Example($exampleAction), __('message.success_retrieved'));
+        return Responder::success($exampleAction, __('message.success_retrieved'));
+        // return Responder::success(new Example($exampleAction), __('message.success_retrieved'));
     }
 
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        $exampleDTO = ExampleStoreDTO::fromRequest($request);
+        $exampleDTO = ExampleStoreDTO::from($request);
         $exampleAction = Executor::run('Example@ExampleStoreAction', $exampleDTO);
         return Responder::success($exampleAction, __('message.success_save'));
     }
 
-    public function update(UpdateRequest $request)
+    public function update(Request $request)
     {
-        $exampleDTO = ExampleUpdateDTO::fromRequest($request);
+        $exampleDTO = ExampleUpdateDTO::from($request);
         $exampleAction = Executor::run('Example@ExampleUpdateAction', $exampleDTO);
         return Responder::success($exampleAction, __('message.success_save'));
     }

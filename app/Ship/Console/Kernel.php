@@ -6,7 +6,7 @@ use App\Ship\Console\Commands\RevokeExpiredUserTokenCommand;
 use BenSampo\Enum\Commands\MakeEnumCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
-use Laravelista\LumenVendorPublish\VendorPublishCommand;
+use Mazfreelance\LumenVendorPublish\VendorPublishCommand;
 
 class Kernel extends ConsoleKernel
 {
