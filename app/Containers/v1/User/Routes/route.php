@@ -11,8 +11,8 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->get('/', ['uses' => 'Controller@index', 'as' => 'index']);
     $router->post('/', ['uses' => 'Controller@store', 'as' => 'store']);
-    $router->get('/{userId}', ['uses' => 'Controller@show', 'as' => 'show']);
-    $router->put('/{userId}', ['uses' => 'Controller@update', 'as' => 'update']);
-    $router->delete('/{userId}', ['uses' => 'Controller@destroy', 'as' => 'destroy']);
+    $router->get('/{id}', ['uses' => 'Controller@show', 'as' => 'show']);
+    $router->put('/{id}', ['uses' => 'Controller@update', 'as' => 'update']);
+    $router->delete('/{id}', ['uses' => 'Controller@destroy', 'as' => 'destroy']);
     $router->post('/export', ['uses' => 'Controller@export', 'as' => 'export']);
 });

@@ -2,29 +2,29 @@
 
 namespace App\Containers\v1\User\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
-/**
- * @reference https://github.com/spatie/data-transfer-object
- */
-class UserStoreDTO extends DataTransferObject
+class UserStoreDTO extends Data
 {
-    public $name;
+    public function __construct(
+        public string $name,
+        public string $email,
+        public string $password,
+        public string $role
+    ) {}
 
-    public $email;
-
-    public $password;
-
-    public $role;
-
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => $request->role,
-        ]);
+        return [
+            'name' => "required|alpha_dash|max:125|unique:users|bail",
+            'email' => 'required|email|max:125|unique:users|bail',
+            'password' => 'required|string|min:8|confirmed|bail',
+            'role' => 'required|exists:roles,name|string|bail'
+        ];
     }
 }

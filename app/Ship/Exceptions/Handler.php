@@ -11,7 +11,7 @@ use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
-use Symfony\Component\HttpKernel\Exception\{HttpException, MethodNotAllowedHttpException, ServiceUnavailableHttpException};
+use Symfony\Component\HttpKernel\Exception\{HttpException, MethodNotAllowedHttpException, NotFoundHttpException, ServiceUnavailableHttpException};
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -84,7 +84,9 @@ class Handler extends ExceptionHandler
             return Responder::methodNotAllowed();
         } else if ($exception instanceof GeneralHttpException) {
             return Responder::error($exception->getMessage(), $exception->getStatusCode());
-        }else {
+        } else if ($exception instanceof NotFoundHttpException) {
+            return Responder::notFound(__('message.route_not_found'));
+        } else {
             if ($request->has('request_id')) {
                 RequestLog::where('request_id', $request->request_id)->update([
                     'response' => [

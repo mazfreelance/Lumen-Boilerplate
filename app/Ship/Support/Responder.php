@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\App;
  * Responder
  *
  * @method JsonResponse success(array $data = [], ?string $message = null, int $code = JsonResponse::HTTP_OK)
- * @method JsonResponse notFound()
+ * @method JsonResponse notFound(?string $message = null)
  * @method JsonResponse inputError(array $errors)
  * @method JsonResponse serverError(string $message)
  * @method JsonResponse error(string $message, int $code = JsonResponse::HTTP_BAD_REQUEST)
@@ -45,11 +45,11 @@ class Responder
      *
      * @return JsonResponse
      */
-    public function notFound(): JsonResponse
+    public function notFound(?string $message = null): JsonResponse
     {
         return response()->json([
             'code' => JsonResponse::HTTP_NOT_FOUND,
-            'message' => __('message.no_record'),
+            'message' => $message ?? __('message.no_record'),
         ], JsonResponse::HTTP_NOT_FOUND);
     }
 

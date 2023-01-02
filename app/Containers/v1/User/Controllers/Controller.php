@@ -61,10 +61,10 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
-        $userStoreDTO = UserStoreDTO::fromRequest($request);
-        Executor::run('User@UserStoreAction', $userStoreDTO);
+        $userStoreDTO = UserStoreDTO::from($request);
+        Executor::run('User@StoreAction', $userStoreDTO);
 
         return Responder::success([], __('message.success_create'));
     }
@@ -76,9 +76,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(int $userId)
+    public function show(int $id)
     {
-        $user = Executor::run('User@GetOneAction', $userId);
+        $user = Executor::run('User@GetOneAction', $id);
 
         return Responder::success(new User($user), __('message.success_retrieved'));
     }
@@ -97,10 +97,10 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UserUpdateRequest $request, int $userId)
+    public function update(Request $request, int $id)
     {
-        $userUpdateDTO = UserUpdateDTO::fromRequest($request);
-        Executor::run('User@UserUpdateAction', $userUpdateDTO, $userId);
+        $userUpdateDTO = UserUpdateDTO::from($request);
+        Executor::run('User@UpdateAction', $userUpdateDTO, $id);
 
         return Responder::success([], __('message.success_update'));
     }
@@ -112,9 +112,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(int $userId)
+    public function destroy(int $id)
     {
-        $user = Executor::run('User@DeleteAction', $userId);
+        $user = Executor::run('User@DeleteAction', $id);
 
         return Responder::success(new User($user), __('message.success_delete'));
     }

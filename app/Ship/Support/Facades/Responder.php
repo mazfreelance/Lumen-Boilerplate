@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Illuminate\Http\JsonResponse inputError(array $errors)
  * @method static \Illuminate\Http\JsonResponse serverError(string $message)
  * @method static \Illuminate\Http\JsonResponse serverBusy()
- * @method static \Illuminate\Http\JsonResponse notFound()
+ * @method static \Illuminate\Http\JsonResponse notFound(string $message)
  * @method static \Illuminate\Http\JsonResponse unauthorized()
  * @method static \Illuminate\Http\JsonResponse forbiddenAccess()
  * @method static \Illuminate\Http\JsonResponse forbiddenManage()

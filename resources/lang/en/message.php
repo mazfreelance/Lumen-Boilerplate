@@ -19,6 +19,7 @@ return [
     'no_record' => 'No record found.',
     'not_allow_to_block_ownself' => 'You are not allowed to block yourself.',
     'not_allow_to_unblock_ownself' => 'You are not allowed to unblock yourself.',
+    'route_not_found' => 'Route not found.',
     'server_busy' => 'Server is busy. Please try again later.',
     'server_error' => 'Internal server error.',
     'success_create' => 'Successfully created.',

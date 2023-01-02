@@ -3,12 +3,10 @@
 namespace App\Containers\v1\User\Controllers;
 
 use App\Containers\v1\User\DTO\{ChangePasswordDTO};
-use App\Containers\v1\User\Requests\{ChangePasswordRequest};
+use App\Containers\v1\User\Resources\Profile;
 use App\Ship\Controllers\Controller as BaseController;
-use App\Ship\Rules\Base64Image;
 use App\Ship\Support\Facades\{Executor, Responder};
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 /**
  * @group Profile
@@ -34,7 +32,7 @@ class ProfileController extends BaseController
     {
         $user = Executor::run('User@GetMeAction');
 
-        return Responder::success($user, __('message.success_retrieve'));
+        return Responder::success(new Profile($user), __('message.success_retrieve'));
     }
 
     /**
@@ -46,9 +44,9 @@ class ProfileController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function changePassword(ChangePasswordRequest $request)
+    public function changePassword(Request $request)
     {
-        $changePasswordDTO = ChangePasswordDTO::fromRequest($request);
+        $changePasswordDTO = ChangePasswordDTO::from($request);
         Executor::run('User@ChangePasswordAction', $changePasswordDTO);
 
         return Responder::success([], __('message.success_update'));
