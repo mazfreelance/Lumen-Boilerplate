@@ -3,7 +3,6 @@
 namespace App\Containers\v1\Authentication\Controllers;
 
 use App\Containers\v1\Authentication\DTO\{EmailVerificationDTO, ForgotPasswordDTO, LoginDTO, RefreshTokenDTO, RegisterDTO, ResendEmailVerificationDTO, ResetPasswordDTO};
-use App\Containers\v1\Authentication\Requests\{EmailVerificationRequest, ForgotPasswordRequest, LoginRequest, RegisterRequest, ResendEmailVerificationRequest, ResetPasswordRequest};
 use App\Ship\Controllers\Controller as BaseController;
 use App\Ship\Support\Facades\{Executor, Responder};
 use Illuminate\Http\Request;
@@ -29,9 +28,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
-        $loginDTO = LoginDTO::fromRequest($request);
+        $loginDTO = LoginDTO::from($request);
         $tokenData = Executor::run('Authentication@LoginAction', $loginDTO);
 
         return Responder::success($tokenData, __('message.success_login'));
@@ -48,9 +47,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(RegisterRequest $request)
+    public function register(Request $request)
     {
-        $registerDTO = RegisterDTO::fromRequest($request);
+        $registerDTO = RegisterDTO::from($request);
         Executor::run('Authentication@RegisterAction', $registerDTO);
 
         return Responder::success([], __('message.success_register'));
@@ -63,9 +62,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function emailVerification(EmailVerificationRequest $request)
+    public function emailVerification(Request $request)
     {
-        $emailVerificationDTO = EmailVerificationDTO::fromRequest($request);
+        $emailVerificationDTO = EmailVerificationDTO::from($request);
         Executor::run('Authentication@EmailVerificationAction', $emailVerificationDTO);
 
         return Responder::success([], __('message.success_verify'));
@@ -79,9 +78,9 @@ class Controller extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function forgotPassword(ForgotPasswordRequest $request)
+    public function forgotPassword(Request $request)
     {
-        $forgotPasswordDTO = ForgotPasswordDTO::fromRequest($request);
+        $forgotPasswordDTO = ForgotPasswordDTO::from($request);
         Executor::run('Authentication@ForgotPasswordAction', $forgotPasswordDTO);
 
         return Responder::success([], __('message.success_sent'));
@@ -97,9 +96,9 @@ class Controller extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function resetPassword(ResetPasswordRequest $request)
+    public function resetPassword(Request $request)
     {
-        $resetPasswordByEmailDTO = ResetPasswordDTO::fromRequest($request);
+        $resetPasswordByEmailDTO = ResetPasswordDTO::from($request);
         Executor::run('Authentication@ResetPasswordAction', $resetPasswordByEmailDTO);
 
         return Responder::success([], __('message.success_update'));
@@ -114,7 +113,7 @@ class Controller extends BaseController
      */
     public function refreshToken(Request $request)
     {
-        $refreshTokenDTO = RefreshTokenDTO::fromRequest($request);
+        $refreshTokenDTO = RefreshTokenDTO::from($request);
         $tokenData = Executor::run('Authentication@RefreshTokenAction', $refreshTokenDTO);
 
         return Responder::success($tokenData, __('message.success_refresh'));
@@ -142,9 +141,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function resendEmailVerification(ResendEmailVerificationRequest $request)
+    public function resendEmailVerification(Request $request)
     {
-        $resendEmailVerificationDTO = ResendEmailVerificationDTO::fromRequest($request);
+        $resendEmailVerificationDTO = ResendEmailVerificationDTO::from($request);
         $email = Executor::run('Authentication@ResendEmailVerificationAction', $resendEmailVerificationDTO);
 
         return Responder::success([], __('message.success_verify_sent', ['email' => $email]));

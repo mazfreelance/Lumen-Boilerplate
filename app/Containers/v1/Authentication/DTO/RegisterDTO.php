@@ -2,30 +2,33 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\{MapInputName, MapOutputName};
 
 /**
  * @reference https://github.com/spatie/data-transfer-object
  */
-class RegisterDTO extends DataTransferObject
+class RegisterDTO extends Data
 {
-    public $name;
+    public function __construct(
+        public string $name,
+        public string $email,
+        public string $password,
+        public bool $agree_term
+    ) {}
 
-    public $email;
-
-    public $password;
-
-    public $agree_term;
-
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'agree_term' => $request->agree_term,
-        ]);
+        return [
+            'name' => 'required|string|max:125|bail',
+            'email' => 'required|email|unique:users|max:100|bail',
+            'password' => 'required|string|confirmed|min:6|bail',
+            'agree_term' => 'required|accepted|bail'
+        ];
     }
-
 }

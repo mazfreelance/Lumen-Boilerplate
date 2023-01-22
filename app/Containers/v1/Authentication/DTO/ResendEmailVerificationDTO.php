@@ -2,21 +2,28 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Illuminate\Support\Facades\Auth;
+use Spatie\LaravelData\Data;
 
 /**
  * @reference https://github.com/spatie/data-transfer-object
  */
-class ResendEmailVerificationDTO extends DataTransferObject
+class ResendEmailVerificationDTO extends Data
 {
-    public $email;
+    public function __construct(
+        public ?string $email
+    ) {}
 
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'email' => $request->email,
-        ]);
+        $userId = Auth::id();
+        return [
+            "email" => ["nullable", "email:filter", "max:125", "unique:users,email,{$userId}", "bail"],
+        ];
     }
-
 }

@@ -2,21 +2,14 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
 /**
  * @reference https://github.com/spatie/data-transfer-object
  */
-class RefreshTokenDTO extends DataTransferObject
+class RefreshTokenDTO extends Data
 {
-    public $refresh_token;
-
-    public static function fromRequest(Request $request): self
-    {
-        return new self([
-            'refresh_token' => $request->refresh_token,
-        ]);
-    }
-
+    public function __construct(
+        public string $refresh_token
+    ) {}
 }

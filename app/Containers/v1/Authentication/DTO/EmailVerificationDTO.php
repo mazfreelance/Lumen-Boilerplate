@@ -2,17 +2,26 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
-class EmailVerificationDTO extends DataTransferObject
+/**
+ * @reference https://github.com/spatie/data-transfer-object
+ */
+class EmailVerificationDTO extends Data
 {
-    public $token;
+    public function __construct(
+        public string $token
+    ) {}
 
-    public static function fromRequest(Request $request)
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'token' => $request->token
-        ]);
+        return [
+            'token' => 'required|string|max:255|exists:users,verification_token|bail'
+        ];
     }
 }

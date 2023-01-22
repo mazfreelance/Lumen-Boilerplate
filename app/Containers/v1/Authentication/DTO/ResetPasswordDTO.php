@@ -2,24 +2,28 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
 /**
  * @reference https://github.com/spatie/data-transfer-object
  */
-class ResetPasswordDTO extends DataTransferObject
+class ResetPasswordDTO extends Data
 {
-    public $token;
+    public function __construct(
+        public string $token,
+        public string $password
+    ) {}
 
-    public $password;
-
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'token' => $request->token,
-            'password' => $request->password,
-        ]);
+        return [
+            'token' => 'required|string|exists:password_resets,token|bail',
+            'password' => 'required|alpha_num|confirmed|min:8|max:12|bail'
+        ];
     }
-
 }

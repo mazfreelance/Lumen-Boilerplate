@@ -2,6 +2,10 @@
 
 return [
     'currently_online' => 'You are currently logged-in in another device. By continuing, your current session will be terminated. Continue?',
+    'guzzle' => [
+        'invalid_body_type' => 'Invalid guzzle request body type.',
+        'request_error' => 'Error processing your request. Please try again.',
+    ],
     'invalid_credential' => 'Incorrect login credentials.',
     'invalid_current_password' => 'Invalid current password.',
     'invalid_data' => 'The given data was invalid.',
@@ -48,10 +52,7 @@ return [
     'user_blocked' => 'Your account has been blocked. Please contact customer support.',
     'user_email_verified' => 'Your email has been verified.',
     'user_locked' => 'Your account has been locked due to too many failed login attempts. Please reset your password.',
-    'guzzle' => [
-        'invalid_body_type' => 'Invalid guzzle request body type.',
-        'request_error' => 'Error processing your request. Please try again.',
-    ],
+    'verify_email' => 'Your email has not been verified. Please verify your email.',
     'you_can_only_update_own_current_role' => 'You can only update your own current role.',
     'you_can_only_delete_your_own_account' => 'You can only delete your own account.',
     'you_cant_delete_admin' => 'You cannot delete admin.',

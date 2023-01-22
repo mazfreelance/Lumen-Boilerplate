@@ -2,21 +2,26 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
 /**
  * @reference https://github.com/spatie/data-transfer-object
  */
-class ForgotPasswordDTO extends DataTransferObject
+class ForgotPasswordDTO extends Data
 {
-    public $email;
+    public function __construct(
+        public string $email
+    ) {}
 
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'email' => $request->email,
-        ]);
+        return [
+            'email' => 'required|email:filter|max:125|bail'
+        ];
     }
-
 }

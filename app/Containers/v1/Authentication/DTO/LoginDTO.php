@@ -2,27 +2,32 @@
 
 namespace App\Containers\v1\Authentication\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Data;
 
-/**
- * @reference https://github.com/spatie/data-transfer-object
- */
-class LoginDTO extends DataTransferObject
+class LoginDTO extends Data
 {
-    public $email;
+    public function __construct(
+        public string $email,
+        public string $password,
+        public ?bool $force = false
+    ) {}
 
-    public $password;
-
-    public $force;
-
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'email' => $request->email,
-            'password' => $request->password,
-            'force' => $request->force ?? false
-        ]);
+        return [
+            'email' => 'required|email|bail',
+            'password' => 'required|string|bail',
+            'force' => [
+                Rule::requiredIf(!config('app.allow_login_multiple_token')),
+                'boolean',
+                'bail'
+            ]
+        ];
     }
-
 }

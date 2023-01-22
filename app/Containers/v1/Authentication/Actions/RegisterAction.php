@@ -6,7 +6,6 @@ use App\Containers\v1\Authentication\DTO\RegisterDTO;
 use App\Containers\v1\Notification\Notifications\ActionUpdate;
 use App\Containers\v1\User\Enums\{UserStatus, UserVerifyStatus};
 use App\Containers\v1\User\Models\User;
-use App\Ship\Mail\SendEmailTest;
 use App\Ship\Mail\SendEmailVerification;
 use App\Ship\Support\Facades\Helper;
 use Illuminate\Support\Facades\{DB, Hash, Mail};
