@@ -73,9 +73,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function multiRead(MultiReadRequest $request)
+    public function multiRead(Request $request)
     {
-        $notificationStoreDTO = NotificationStoreDTO::fromRequest($request);
+        $notificationStoreDTO = NotificationStoreDTO::from($request);
         Executor::run('Notification@MultiReadAction', $notificationStoreDTO);
 
         return Responder::success([], __('message.success_update'));
@@ -88,9 +88,9 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function multiDelete(MultiDeleteRequest $request)
+    public function multiDelete(Request $request)
     {
-        $notificationStoreDTO = NotificationStoreDTO::fromRequest($request);
+        $notificationStoreDTO = NotificationStoreDTO::from($request);
         Executor::run('Notification@MultiDeleteAction', $notificationStoreDTO);
 
         return Responder::success([], __('message.success_delete'));

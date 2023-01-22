@@ -2,17 +2,27 @@
 
 namespace App\Containers\v1\Notification\DTO;
 
-use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
-class NotificationStoreDTO extends DataTransferObject
+/**
+ * @reference https://github.com/spatie/data-transfer-object
+ */
+class NotificationStoreDTO extends Data
 {
-    public $notification_ids;
+    public function __construct(
+        public array $notification_ids
+    ) {}
 
-    public static function fromRequest(Request $request): self
+    /**
+     * to construct a custom rule object
+     *
+     * @reference https://laravel.com/docs/9.x/validation
+     */
+    public static function rules(): array
     {
-        return new self([
-            'notification_ids' => $request->notification_ids
-        ]);
+        return [
+            'notification_ids' => ['required', 'array', 'bail'],
+            'notification_ids.*' => ['integer', 'max:36', 'bail']
+        ];
     }
 }
