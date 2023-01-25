@@ -125,4 +125,12 @@ return [
     ],
 
     'allow_login_multiple_token' => env('ALLOW_LOGIN_MULTIPLE_TOKEN', false),
+
+    'seeders' => [
+        'admin' => [
+            'name' => env('ADMIN_USER_SEED_NAME'),
+            'email' => env('ADMIN_USER_SEED_EMAIL'),
+            'password' => env('ADMIN_USER_SEED_PASSWORD')
+        ],
+    ],
 ];
