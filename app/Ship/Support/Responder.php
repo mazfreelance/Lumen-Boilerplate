@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\App;
  * @method JsonResponse notFound(?string $message = null)
  * @method JsonResponse inputError(array $errors)
  * @method JsonResponse serverError(string $message)
- * @method JsonResponse error(string $message, int $code = JsonResponse::HTTP_BAD_REQUEST)
+ * @method JsonResponse error(string $message, int $code = JsonResponse::HTTP_BAD_REQUEST, int $errorNo)
  * @method JsonResponse unauthorized()
  * @method JsonResponse forbiddenAccess()
  * @method JsonResponse forbiddenManage()
  * @method JsonResponse forbiddenAction()
  * @method JsonResponse forbiddenLogin()
  * @method JsonResponse tooManyAttempts()
- * @method JsonResponse collection(array $data = [])
  */
 class Responder
 {
@@ -116,10 +115,11 @@ class Responder
      * @param int $code
      * @return JsonResponse
      */
-    public function error(string $message, int $code = JsonResponse::HTTP_BAD_REQUEST): JsonResponse
+    public function error(string $message, int $code = JsonResponse::HTTP_BAD_REQUEST, int $errorNo = 0): JsonResponse
     {
         return response()->json([
             'code' => $code,
+            'error' => $errorNo,
             'message' => $message,
         ], $code);
     }
@@ -182,50 +182,5 @@ class Responder
     public function tooManyAttempts(): JsonResponse
     {
         return $this->error(__('message.too_many_attempts'), JsonResponse::HTTP_TOO_MANY_REQUESTS);
-    }
-
-    /**
-     * Collection
-     *
-     * @param object|array $data
-     * @return JsonResponse
-     */
-    public function collection($data = []): JsonResponse
-    {
-        if (
-            $data instanceof \Illuminate\Pagination\LengthAwarePaginator
-            || $data instanceof \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-        ) {
-            if ($data->items()) {
-                $this->data = $data->items();
-            } else {
-                $this->data = [];
-            }
-
-            $meta = [
-                'current_page' => $data->currentPage(),
-                'last_page' => $data->lastPage(),
-                'from' => $data->firstItem(),
-                'to' => $data->lastItem(),
-                'per_page' => $data->perPage(),
-                'total' => $data->total(),
-                'has_more_pages' => $data->hasMorePages(),
-            ];
-
-            $links = [
-                'first' => $data->url(1),
-                'last' => $data->url($data->lastPage()),
-                'prev' => $data->previousPageUrl(),
-                'next' => $data->nextPageUrl(),
-            ];
-
-            $data = [
-                'records' => $this->data,
-                'pagination' => $meta,
-                // 'links' => $links
-            ];
-        }
-
-        return $this->success($data, __('message.success_retrieved'));
     }
 }

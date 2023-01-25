@@ -4,7 +4,7 @@ namespace App\Containers\v1\User\Controllers;
 
 use App\Containers\v1\User\DTO\{UserStoreDTO, UserUpdateDTO};
 use App\Containers\v1\User\Requests\{UserStoreRequest, UserUpdateRequest};
-use App\Containers\v1\User\Resources\User;
+use App\Containers\v1\User\Resources\{User, UserCollection};
 use App\Ship\Controllers\Controller as BaseController;
 use App\Ship\Support\Facades\{Executor, Responder};
 use Illuminate\Http\Request;
@@ -48,7 +48,7 @@ class Controller extends BaseController
     {
         $users = Executor::run('User@GetAllAction', $request, $this->pageSize);
 
-        return Responder::collection(User::collection($users));
+        return Responder::success(new UserCollection($users));
     }
 
     /**

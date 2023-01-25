@@ -83,7 +83,8 @@ class Handler extends ExceptionHandler
         } else if ($exception instanceof MethodNotAllowedHttpException) {
             return Responder::methodNotAllowed();
         } else if ($exception instanceof GeneralHttpException) {
-            return Responder::error($exception->getMessage(), $exception->getStatusCode());
+            $errorNo = ($exception->getCode() === 2) ? $exception->getCode() : 1;
+            return Responder::error($exception->getMessage(), $exception->getStatusCode(), $errorNo);
         } else if ($exception instanceof NotFoundHttpException) {
             return Responder::notFound(__('message.route_not_found'));
         } else {

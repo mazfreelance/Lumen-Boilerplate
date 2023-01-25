@@ -50,7 +50,7 @@ class LoginAction
     private function isOnline(User $user, bool $isForce): void
     {
         if ($user->online_status->value === UserOnlineStatus::Online && !$isForce) {
-            throw new GeneralHttpException(__('message.currently_online'));
+            throw new GeneralHttpException(__('message.currently_online'), 400, null, 2);
         }
     }
 

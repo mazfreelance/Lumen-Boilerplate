@@ -23,7 +23,7 @@ class Controller extends BaseController
     {
         $exampleDTO = ExampleAllDTO::from($request);
         return $exampleAction = Executor::run('Example@ExampleAllAction', $exampleDTO);
-        // return Responder::collection(Example::collection($exampleAction));
+        // return Responder::success(Example::collection($exampleAction));
     }
 
     public function show(int $id)

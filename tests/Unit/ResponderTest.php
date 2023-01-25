@@ -179,7 +179,7 @@ class ResponderTest extends TestCase
      */
     public function testCollectionResponse()
     {
-        $response = Responder::collection(User::paginate(10));
+        $response = Responder::success(User::paginate(10));
         $result = $response->original;
 
         $this->assertArrayHasKey("code", $result);

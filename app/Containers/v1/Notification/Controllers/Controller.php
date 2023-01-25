@@ -3,8 +3,7 @@
 namespace App\Containers\v1\Notification\Controllers;
 
 use App\Containers\v1\Notification\DTO\NotificationStoreDTO;
-use App\Containers\v1\Notification\Requests\{MultiDeleteRequest, MultiReadRequest};
-use App\Containers\v1\Notification\Resources\Notification;
+use App\Containers\v1\Notification\Resources\{Notification, NotificationCollection};
 use App\Ship\Controllers\Controller as BaseController;
 use App\Ship\Support\Facades\Executor;
 use App\Ship\Support\Facades\Responder;
@@ -35,7 +34,7 @@ class Controller extends BaseController
     {
         $action = Executor::run('Notification@GetAllAction', $request, $this->pageSize);
 
-        return Responder::collection(Notification::collection($action));
+        return Responder::success(new NotificationCollection($action));
     }
 
     /**

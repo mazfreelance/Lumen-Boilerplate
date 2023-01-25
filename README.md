@@ -111,3 +111,8 @@ vendor/bin/phpunit --filter 'UserTest'
 ```bash
 vendor/bin/phpunit --filter 'Tests\\Feature'
 ```
+
+## Error code
+| code | error no                                                  |
+|------|-----------------------------------------------------------|
+|400   | 0 - Bad Request, 1 - General Error, 2 - User online status|
