@@ -44,7 +44,8 @@ class RevokeExpiredUserTokenCommand extends Command
             ->where('expires_at', '<=', Carbon::now())
             ->chunkById(200, function ($tokens) {
                 $tokens->each(function ($token) {
-                    $token->revoke();
+                    $token->delete();
+                    // $token->revoke();
                 });
             });
     }

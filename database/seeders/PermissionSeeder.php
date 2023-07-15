@@ -61,13 +61,6 @@ class PermissionSeeder extends Seeder
         });
     }
 
-    private function getPermissions(): Collection
-    {
-        return Collection::make([
-            'user.list-all', 'user.one', 'user.create', 'user.edit', 'user.destroy', 'user.export',
-        ]);
-    }
-
     private function getRolesData(Collection $permissions): Collection
     {
         return Collection::make([
@@ -97,5 +90,12 @@ class PermissionSeeder extends Seeder
     private function getOrCreateRole(string $name): Role
     {
         return Role::firstOrCreate(['name' => $name]);
+    }
+
+    private function getPermissions(): Collection
+    {
+        return Collection::make([
+            'user.list-all', 'user.one', 'user.create', 'user.edit', 'user.destroy', 'user.export',
+        ]);
     }
 }
