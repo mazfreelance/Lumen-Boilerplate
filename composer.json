@@ -5,36 +5,34 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^8.0",
-        "anik/form-request": "^4.5",
-        "bensampo/laravel-enum": "^5.3",
-        "dusterio/lumen-passport": "^0.3.6",
-        "flipbox/lumen-generator": "^9.1",
-        "fruitcake/laravel-cors": "^3.0",
-        "guzzlehttp/guzzle": "^7.4",
-        "illuminate/mail": "^9.17",
-        "illuminate/notifications": "^9.17",
-        "illuminate/redis": "^9.17",
+        "php": "^8.1",
+        "anik/form-request": "@dev",
+        "bensampo/laravel-enum": "^6.4",
+        "dusterio/lumen-passport": "@dev",
+        "flipbox/lumen-generator": "^9.2",
+        "fruitcake/php-cors": "^1.2",
+        "guzzlehttp/guzzle": "^7.7",
+        "illuminate/mail": "^10.15",
+        "illuminate/notifications": "^10.15",
+        "illuminate/redis": "^10.15",
         "jenssegers/agent": "^2.6",
-        "laravel/lumen-framework": "^9.0",
-        "laravel/passport": "v10.4.1",
-        "league/flysystem": "^3.0",
+        "laravel/lumen-framework": "^10.0",
+        "league/flysystem": "^3.15",
         "maatwebsite/excel": "^3.1",
-        "mazfreelance/laravel-command-generator": "^2.0",
-        "mazfreelance/lumen-vendor-publish": "^9.0",
-        "predis/predis": "^2.0",
-        "psr/simple-cache": "1.0",
-        "pusher/pusher-php-server": "^7.0",
-        "rogervila/lumen-rate-limiting": "^1.1",
-        "sentry/sentry-laravel": "^2.12",
-        "spatie/laravel-permission": "^5.5",
-        "spatie/laravel-sluggable": "^3.4",
-        "tucker-eric/eloquentfilter": "^3.1"
+        "mazfreelance/laravel-command-generator": "^2.2",
+        "mazfreelance/lumen-vendor-publish": "^10.0",
+        "psr/simple-cache": "^3.0",
+        "pusher/pusher-php-server": "^7.2",
+        "rogervila/lumen-rate-limiting": "^1.2",
+        "sentry/sentry-laravel": "^3.6",
+        "spatie/laravel-permission": "^5.10",
+        "spatie/laravel-sluggable": "^3.5",
+        "tucker-eric/eloquentfilter": "^3.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^10.0"
     },
     "autoload": {
         "psr-4": {
@@ -56,8 +54,21 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mazfreelance/form-request.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/laravel-shift/lumen-passport.git"
+        }
+    ]
 }
