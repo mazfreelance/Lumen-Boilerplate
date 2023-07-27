@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "445d76fc5c883b18d5d808899386d539",
+    "content-hash": "8645dacacce1eb45d8d33d67ae915211",
     "packages": [
         {
             "name": "anik/form-request",
-            "version": "dev-master",
+            "version": "v5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mazfreelance/form-request.git",
-                "reference": "97cbaab736b240d88cbe58eb46804f6e16c85e8b"
+                "url": "https://github.com/ssi-anik/form-request.git",
+                "reference": "9c3aa82adc07c6431c0968fdaf36a4abc6e68c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazfreelance/form-request/zipball/97cbaab736b240d88cbe58eb46804f6e16c85e8b",
-                "reference": "97cbaab736b240d88cbe58eb46804f6e16c85e8b",
+                "url": "https://api.github.com/repos/ssi-anik/form-request/zipball/9c3aa82adc07c6431c0968fdaf36a4abc6e68c51",
+                "reference": "9c3aa82adc07c6431c0968fdaf36a4abc6e68c51",
                 "shasum": ""
             },
             "require": {
@@ -27,18 +27,13 @@
             "require-dev": {
                 "anik/testbench-lumen": "^1.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Anik\\Form\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Anik\\Form\\Test\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -55,9 +50,10 @@
                 "validation"
             ],
             "support": {
-                "source": "https://github.com/mazfreelance/form-request/tree/master"
+                "issues": "https://github.com/ssi-anik/form-request/issues",
+                "source": "https://github.com/ssi-anik/form-request/tree/v5.0"
             },
-            "time": "2023-07-25T01:25:18+00:00"
+            "time": "2023-07-26T23:59:24+00:00"
         },
         {
             "name": "bensampo/laravel-enum",
@@ -12917,7 +12913,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "anik/form-request": 20,
         "dusterio/lumen-passport": 20
     },
     "prefer-stable": true,
